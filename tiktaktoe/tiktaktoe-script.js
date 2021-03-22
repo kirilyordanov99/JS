@@ -4,10 +4,10 @@ let gameActive = true;
 
 let currentPlayer = "X";
 
-let gameState = ["", "", "", "", "", "", "", "", ""];
+let gameState = ["", "", "", "", "","", "", "", "", "","", "", "", "", "","", "", "", "", "","", "", "", "", ""];
 
-const winningMessage = () => `Player ${currentPlayer} has won!`;
-const drawMessage = () => `DRAW!`;
+const winningMessage = () => `Player ${currentPlayer} IS WINNER!`;
+const drawMessage = () => `GAME IS DRAW!`;
 const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
 
 statusDisplay.innerHTML = currentPlayerTurn();
@@ -49,28 +49,35 @@ function handleCellPlayed(clickedCell, clickedCellIndex) {
     gameState[clickedCellIndex] = currentPlayer;
     clickedCell.innerHTML = currentPlayer;
 } const winCondition =  [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
+    [0,  1,  2,  3,  4],
+    [5,  6,  7,  8,  9],
+    [10, 11, 12, 13, 14],
+    [15, 16, 17, 18, 19],
+    [20, 21, 22, 23, 24],
+    [0,  5,  10, 15, 20],
+    [1,  6,  11, 16, 21],
+    [2,  7,  12, 17, 22],
+    [3,  8,  13, 18, 23],
+    [4,  9,  14, 29, 24],
+    [0,  6,  12, 18, 24],
+    [4,  8,  12, 16, 20],
+   
 ];
 function handleResultValidation() {
     let roundWon = false;
-    for (let i = 0; i <= 7; i++) {
+    for (let i = 0; i <= 11; i++) {
         const winCondition = winningConditions[i];
         let a = gameState[winCondition[0]];
         let b = gameState[winCondition[1]];
         let c = gameState[winCondition[2]];
-        if (a === '' || b === '' || c === '') {
+        let d = gameState[winCondition[3]];
+        let e = gameState[winCondition[4]];
+        if (a === '' || b === '' || c === '' || d === '' || e === '') {
             continue;
         }
-        if (a === b && b === c) {
+        if (a === b && b === c && c === d && d === e) {
             roundWon = true;
-            break
+            break;
         }
     }
 if (roundWon) {
@@ -80,28 +87,35 @@ if (roundWon) {
     }
 }
 const winningConditions = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
+    [0,  1,  2,  3,  4],
+    [5,  6,  7,  8,  9],
+    [10, 11, 12, 13, 14],
+    [15, 16, 17, 18, 19],
+    [20, 21, 22, 23, 24],
+    [0,  5,  10, 15, 20],
+    [1,  6,  11, 16, 21],
+    [2,  7,  12, 17, 22],
+    [3,  8,  13, 18, 23],
+    [4,  9,  14, 29, 24],
+    [0,  6,  12, 18, 24],
+    [4,  8,  12, 16, 20],
+   
 ];
 function handleResultValidation() {
     let roundWon = false;
-    for (let i = 0; i <= 7; i++) {
+    for (let i = 0; i <= 11; i++) {
         const winCondition = winningConditions[i];
         let a = gameState[winCondition[0]];
         let b = gameState[winCondition[1]];
         let c = gameState[winCondition[2]];
-        if (a === '' || b === '' || c === '') {
+        let d = gameState[winCondition[3]];
+        let e = gameState[winCondition[4]];
+        if (a === '' || b === '' || c === '' || d === '' || e === '') {
             continue;
         }
-        if (a === b && b === c) {
+        if (a === b && b === c && c === d && d === e) {
             roundWon = true;
-            break
+            break;
         }
     }
 if (roundWon) {
@@ -126,7 +140,7 @@ function handlePlayerChange() {
 function handleRestartGame() {
     gameActive = true;
     currentPlayer = "X";
-    gameState = ["", "", "", "", "", "", "", "", ""];
+    gameState = ["", "", "", "", "","", "", "", "", "","", "", "", "", "","", "", "", "", "","", "", "", "", ""];
     statusDisplay.innerHTML = currentPlayerTurn();
     document.querySelectorAll('.cell')
                .forEach(cell => cell.innerHTML = "");

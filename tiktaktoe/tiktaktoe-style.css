@@ -5,8 +5,11 @@ section {
     text-align: center;
 }
 .game--container {
+    position:absolute;
+    top:100px;
+    left:510px;
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(5, auto);
     width: 306px;
     margin: 50px auto;
 }
